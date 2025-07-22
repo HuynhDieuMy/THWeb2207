@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra mã bưu điện</title>
+</head>
+<body>
+    <h2>Kiểm tra mã bưu điện</h2>
+    <input type="text" id="BDInput" placeholder="Nhập mã bưu điện (5 số)" />
+    <button id="checkBD">Kiểm tra mã</button>
+    <p id="Result"></p>
+
+    <script>
+        const BDInput = document.getElementById("BDInput");
+        const checkBD = document.getElementById("checkBD");
+        const Result = document.getElementById("Result");
+
+        checkBD.onclick = () => {
+            const code = BDInput.value.trim();
+            const regex = /^\d{5}$/; 
+
+            if (regex.test(code)) {
+                Result.textContent = "Mã bưu điện hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Mã bưu điện không hợp lệ. Vui lòng nhập đúng 5 chữ số.";
+                Result.style.color = "red";
+            }
+        };
+</script>
+</body>
+</html>
