@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra số thẻ tín dụng</title>
+</head>
+<body>
+    <input type="Text" id="TDinput" placeholder="Nhập số thẻ tín dụng">
+    <button id="checkTD">Kiểm tra số thẻ tín dụng</button>
+    <p id="Result"></p>
+
+    <script>
+        const TDinput = document.getElementById("TDinput");
+        const checkTD = document.getElementById("checkTD");
+        const Result = document.getElementById("Result");
+
+        checkTD.onclick = () => {
+            const number = TDinput.value.trim();
+            const regex = /^(\d{4}[- ]?){3}\d{4}$/;
+
+            if (regex.test(regex)) {
+                Result.textContent = "Số thẻ tín dụng hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Số thẻ không hợp lệ. Nhập đúng định dạng 16 số (chia nhóm 4).";
+                Result.style.color = "red";
+            }
+        };
+    </script>
+</body>
+</html>
