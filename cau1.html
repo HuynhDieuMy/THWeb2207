@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra E-mail</title>
+</head>
+<body>
+    <h2> Kiểm tra E-mail </h2>
+    <input type="text" id="inputEmail" placeholder="Nhập vào email"/>
+    <button id="CheckEmail">Kiểm tra Email</button>
+    <p id="Result"></p>
+
+    <script>
+        const inputEmail = document.getElementById("inputEmail");
+        const CheckEmail = document.getElementById("CheckEmail");
+        const Result = document.getElementById("Result");
+
+        CheckEmail.onclick = () => {
+            const email = inputEmail.value;
+            const regex = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+            if (regex.test(email)) {
+                Result.textContent = "Email hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Email không hợp lệ."
+                Result.style.color = "red";
+            }
+        }
+    </script>
+    
+</body>
+</html>
