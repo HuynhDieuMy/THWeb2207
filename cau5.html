@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngày sinh hợp lệ</title>
+</head>
+<body>
+    <h2> Kiểm tra Ngày sinh </h2>
+    <input type="text" id="inputBirth" placeholder="Nhập vào ngày tháng năm sinh: dd/mm/yyyy"/>
+    <button id="CheckBirth">Kiểm tra</button>
+    <p id="Result"></p>
+
+    <script>
+        const inputBirth = document.getElementById("inputBirth");
+        const CheckBirth = document.getElementById("CheckBirth");
+        const Result = document.getElementById("Result");
+
+        CheckBirth.onclick = () => {
+            const birth = inputBirth.value.trim();
+            const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+            if (!regex.test(birth)) {
+                Result.textContent = "Định dạng sai. Phải là dd/mm/yyyy";
+                Result.style.color = "red";
+                return;
+            } 
+
+            const [, dd, mm, yyyy] = birth.match(regex);
+            const day = parseInt(dd, 10);
+            const month = parseInt(mm, 10) -1;
+            const year = parseInt(yyyy, 10);
+            
+            const date = new Date(year, month, day);
+            const today = new Date();
+
+            if (date > today) {
+                Result.textContent = "Ngày này chưa đến."
+                Result.style.color = "red";
+                return;
+            }
+            if (
+                date.getFullYear() === year &&
+                date.getMonth() === month &&
+                date.getDate() === day
+            ) {
+                Result.textContent = "Ngày tháng hợp lệ";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Ngày tháng không tồn tại."
+                Result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
