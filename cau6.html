@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra UserName</title>
+</head>
+<body>
+    <h2>Kiểm tra Username</h2>
+    <input type="text" id="InputUN" placeholder="Nhập Username"/>
+    <button id="checkUN">Kiểm tra</button>
+    <p id="Result"></p>
+</body>
+    <script>
+        const InputUN = document.getElementById("InputUN");
+        const checkUN = document.getElementById("checkUN");
+        const Result = document.getElementById("Result");
+
+        checkUN.onclick = () => {
+            const value = InputUN.value.trim();
+
+            const regex = /^[a-zA-Z0-9_]{5,15}$/;
+
+            if (regex.test(value)) {
+                Result.textContent = "Username hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Username không hợp lệ. Phải từ 5–15 ký tự, chỉ dùng chữ, số hoặc dấu _";
+                Result.style.color = "red";
+        }
+    };
+</script>
+</html>
