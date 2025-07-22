@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mật khẩu an toàn</title>
+</head>
+<body>
+    <h2> Mật khẩu an toàn </h2>
+    <input type="password" id="inputPass" placeholder="Nhập mật khẩu"/>
+    <button id="CheckPass">Kiểm tra mật khẩu</button>
+    <p id="Result"></p>
+
+    <script>
+        const inputPass = document.getElementById("inputPass");
+        const CheckPass = document.getElementById("CheckPass");
+        const Result = document.getElementById("Result");
+
+        CheckPass.onclick = () => {
+            const password  = inputPass.value;
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+
+            if (regex.test(password)) {
+                Result.textContent = "Mật khẩu hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Mật khẩu không hợp lệ. Phải có chữ hoa, chữ thường, ký tự đặc biệt và í nhất 8 ký tự."
+                Result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
