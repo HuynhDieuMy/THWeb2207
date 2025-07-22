@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra URL</title>
+</head>
+<body>
+    <h2>Kiểm tra URL hợp lệ</h2>
+    <input type="text" id="InputURL" placeholder="Nhập URL (vd: https://example.com)" />
+    <button id="checkURL">Kiểm tra URL</button>
+    <p id="Result"></p>
+
+    <script>
+        const InputURL = document.getElementById("InputURL");
+        const checkURL = document.getElementById("checkURL");
+        const Result = document.getElementById("Result");
+
+        checkURL.onclick = () => {
+            const url = InputURL.value.trim();
+            const regex = /^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+
+            if (regex.test(url)) {
+                Result.textContent = "URL hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "URL không hợp lệ.";
+                Result.style.color = "red";
+            }
+        };
+    </script>
+
+</body>
+</html>
