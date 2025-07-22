@@ -6,6 +6,28 @@
     <title>Kiểm tra số điện thoại</title>
 </head>
 <body>
-    
+    <h2> Kiểm tra số điện thoại </h2>
+    <input type="text" id="inputPhone" placeholder="Nhập vào số điện thoại"/>
+    <button id="CheckPhone">Kiểm tra số điện thoại</button>
+    <p id="Result"></p>
+
+    <script>
+        const inputPhone = document.getElementById("inputPhone");
+        const CheckPhone = document.getElementById("CheckPhone");
+        const Result = document.getElementById("Result");
+
+        CheckPhone.onclick = () => {
+            const phone = inputPhone.value;
+            const regex = /^0\d{9}$/;
+
+            if (regex.test(phone)) {
+                Result.textContent = "Số điện thoại hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "số điện thoại không hợp lệ."
+                Result.style.color = "red";
+            }
+        }
+    </script>
 </body>
 </html>
