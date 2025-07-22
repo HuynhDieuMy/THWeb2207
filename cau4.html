@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập họ và tên </title>
+</head>
+<body>
+    <h2> Kiểm tra họ và tên </h2>
+    <input type="text" id="inputName" placeholder="Nhập vào họ và tên"/>
+    <button id="CheckName">Kiểm tra Họ tên </button>
+    <p id="Result"></p>
+
+    <script>
+        const inputName = document.getElementById("inputName");
+        const CheckName = document.getElementById("CheckName");
+        const Result = document.getElementById("Result");
+
+        CheckName.onclick = () => {
+            const name = inputName.value.trim();
+            const regex = /^[A-Za-zÀ-ỹ\s]+$/;
+
+            if (regex.test(name)) {
+                Result.textContent = "Họ tên hợp lệ.";
+                Result.style.color = "green";
+            } else {
+                Result.textContent = "Họ tên không hợp lệ."
+                Result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
